@@ -1,8 +1,9 @@
 /* eslint-env node */
 
 import {chrome} from '../../.electron-vendors.cache.json';
-import vue from '@vitejs/plugin-vue';
+import react from '@vitejs/plugin-react';
 import {renderer} from 'unplugin-auto-expose';
+import svgr from 'vite-plugin-svgr';
 import {join} from 'node:path';
 
 const PACKAGE_ROOT = __dirname;
@@ -42,7 +43,8 @@ const config = {
     environment: 'happy-dom',
   },
   plugins: [
-    vue(),
+    react(),
+    svgr(),
     renderer.vite({
       preloadEntry: join(PACKAGE_ROOT, '../preload/src/index.ts'),
     }),
